@@ -1,0 +1,29 @@
+{
+  "name": "nexpress",
+  "version": "0.0.0",
+  "description": "Re-inventing express web framework",
+  "main": "dist/app/index.js",
+  "type": "module",
+  "scripts": {
+    "prebuild": "rimraf dist",
+    "build": "tsc",
+    "start": "node dist/app/index.js",
+    "start:dev": "nodemon src/app/index.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/saifsweelam/nexpress.git"
+  },
+  "author": "Seif El-Din Sweilam",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/saifsweelam/nexpress/issues"
+  },
+  "homepage": "https://github.com/saifsweelam/nexpress#readme",
+  "devDependencies": {
+    "typescript": "^5.6.3"
+  },
+  "dependencies": {
+    "rimraf": "^6.0.1"
+  }
+}
