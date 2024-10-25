@@ -21,9 +21,8 @@
   },
   "homepage": "https://github.com/saifsweelam/nexpress#readme",
   "devDependencies": {
-    "typescript": "^5.6.3"
-  },
-  "dependencies": {
+    "typescript": "^5.6.3",
+    "@types/node": "^22.8.0",
     "rimraf": "^6.0.1"
   }
 }
