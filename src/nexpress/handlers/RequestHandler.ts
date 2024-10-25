@@ -2,16 +2,21 @@ import Request from '../components/Request';
 import Response from '../components/Response';
 
 abstract class RequestHandler {
-    private next?: RequestHandler;
+    protected next?: RequestHandler;
 
-    abstract execute(req: Request, res: Response): RequestHandler;
+    protected abstract executeLogic(req: Request, res: Response): void;
+
+    execute(req: Request, res: Response): void {
+        this.executeLogic(req, res);
+        this.executeNext(req, res);
+    }
 
     setNext(handler: RequestHandler): RequestHandler {
         this.next = handler;
         return handler;
     }
 
-    executeNext(req: Request, res: Response) {
+    protected executeNext(req: Request, res: Response) {
         if (this.next) {
             this.next.execute(req, res);
         }
