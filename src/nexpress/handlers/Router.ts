@@ -1,8 +1,8 @@
-import Request from "../components/Request";
-import Response from "../components/Response";
-import HandlerFunction from "../types/HandlerFunction";
-import Middleware from "./Middleware";
-import RequestHandler from "./RequestHandler";
+import Request from "../components/Request.js";
+import Response from "../components/Response.js";
+import HandlerFunction from "../types/HandlerFunction.js";
+import Middleware from "./Middleware.js";
+import RequestHandler from "./RequestHandler.js";
 
 class Router extends RequestHandler {
     private handlers: RequestHandler[] = [];
@@ -10,6 +10,9 @@ class Router extends RequestHandler {
     private addRequestHandler(handler: RequestHandler) {
         if (this.handlers.length) {
             this.handlers[this.handlers.length - 1].setNext(handler);
+        }
+        if (this.next) {
+            handler.setNext(this.next);
         }
         this.handlers.push(handler);
     }
@@ -24,7 +27,16 @@ class Router extends RequestHandler {
     executeLogic(req: Request, res: Response) {
         if (this.handlers.length) {
             this.handlers[0].execute(req, res);
+        } else {
+            this.executeNext(req, res);
         }
+    }
+
+    setNext(handler: RequestHandler): RequestHandler {
+        if (this.handlers.length) {
+            this.handlers[this.handlers.length - 1].setNext(handler);
+        }
+        return super.setNext(handler);
     }
 }
 

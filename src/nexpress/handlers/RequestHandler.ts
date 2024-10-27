@@ -1,5 +1,5 @@
-import Request from '../components/Request';
-import Response from '../components/Response';
+import Request from '../components/Request.js';
+import Response from '../components/Response.js';
 
 abstract class RequestHandler {
     protected next?: RequestHandler;
@@ -8,7 +8,7 @@ abstract class RequestHandler {
 
     execute(req: Request, res: Response): void {
         this.executeLogic(req, res);
-        this.executeNext(req, res);
+        // this.executeNext(req, res);
     }
 
     setNext(handler: RequestHandler): RequestHandler {

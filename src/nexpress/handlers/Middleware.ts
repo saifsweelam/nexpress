@@ -1,8 +1,8 @@
-import Request from "../components/Request";
-import Response from "../components/Response";
-import HandlerFunction from "../types/HandlerFunction";
-import NextFunction from "../types/NextFunction";
-import RequestHandler from "./RequestHandler";
+import Request from "../components/Request.js";
+import Response from "../components/Response.js";
+import HandlerFunction from "../types/HandlerFunction.js";
+import NextFunction from "../types/NextFunction.js";
+import RequestHandler from "./RequestHandler.js";
 
 class Middleware extends RequestHandler {
     private handler: HandlerFunction;
