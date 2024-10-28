@@ -1,10 +1,12 @@
 import { Server } from "http";
-import Router, { HasRouting } from "./handlers/Router.js";
+import Router from "./handlers/Router.js";
 import RequestHandler from "./handlers/RequestHandler.js";
 import HandlerFunction from "./types/HandlerFunction.js";
 import Request from "./components/Request.js";
 import Response from "./components/Response.js";
 import Middleware from "./handlers/Middleware.js";
+import SingleRoute from "./handlers/SingleRoute.js";
+import HasRouting from "./types/HasRouting.js";
 
 class Nexpress extends Server implements HasRouting {
     private router: Router;
@@ -50,6 +52,10 @@ class Nexpress extends Server implements HasRouting {
     delete(path: string, ...handlers: (Middleware | HandlerFunction)[]) {
         this.router.delete(path, ...handlers);
         return this;
+    }
+
+    route(path: string): SingleRoute {
+        return this.router.route(path);
     }
 }
 

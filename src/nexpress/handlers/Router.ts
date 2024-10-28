@@ -1,18 +1,9 @@
 import HandlerFunction from "../types/HandlerFunction.js";
+import HasRouting from "../types/HasRouting.js";
 import HandlerSequence from "./HandlerSequence.js";
 import Middleware from "./Middleware.js";
 import RequestHandler from "./RequestHandler.js";
 import SingleRoute from "./SingleRoute.js";
-
-export interface HasRouting {
-    use: (firstParam: string | RequestHandler | HandlerFunction, ...handlers: (RequestHandler | HandlerFunction)[]) => HasRouting,
-    all: (path: string, ...handlers: (Middleware | HandlerFunction)[]) => HasRouting,
-    get: (path: string, ...handlers: (Middleware | HandlerFunction)[]) => HasRouting,
-    post: (path: string, ...handlers: (Middleware | HandlerFunction)[]) => HasRouting,
-    patch: (path: string, ...handlers: (Middleware | HandlerFunction)[]) => HasRouting,
-    put: (path: string, ...handlers: (Middleware | HandlerFunction)[]) => HasRouting,
-    delete: (path: string, ...handlers: (Middleware | HandlerFunction)[]) => HasRouting,
-}
 
 class Router extends HandlerSequence implements HasRouting {
     use(firstParam: string | RequestHandler | HandlerFunction, ...handlers: (RequestHandler | HandlerFunction)[]) {
