@@ -5,6 +5,53 @@ Nexpress is an implementation of an express-like web framework with most of the 
 ## ⚠️ **Disclaimer**
 > **This source code isn't ready for production use.** This implementation of a web framework is just for learning purposes and doesn't assure reliability.
 
+## Usage
+
+See full example in the [app directory](./src/app/)
+
+### Simple Example
+```ts
+import Nexpress from '../nexpress/index.js';
+
+const app = new Nexpress();
+
+app.use((req, res, next) => {
+    console.log(new Date(), req.method, req.path);
+    next();
+})
+
+app.get("/", (req, res, next) => {
+    res.send("Index");
+})
+
+app.get("/page1", (req, res, next) => {
+    res.send("Page 1");
+})
+
+app.use((req, res, next) => {
+    res.send("Global Catcher");
+})
+
+app.listen(3000, () => console.log("Listening on port 3000"));
+```
+
+### Using Routers
+```ts
+import Router from "../nexpress/handlers/Router.js";
+
+const indexRouter = new Router();
+
+indexRouter.route("/login")
+    .get(getLoginForm)
+    .post(postLoginForm)
+
+indexRouter.all("/404", (req, res, next) => {
+    res.send("Not Found");
+})
+
+app.use("/", indexRouter);
+```
+
 ## Architecture
 
 The project is implemented in `ES6 Modules`, using TypeScript to obtain strict typing. The behaviour of the routers and objects is maintained to obtain the maximum flexibility possible.
