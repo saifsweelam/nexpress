@@ -22,10 +22,12 @@
   "homepage": "https://github.com/saifsweelam/nexpress#readme",
   "devDependencies": {
     "@types/node": "^22.8.0",
+    "@types/proper-url-join": "^2.1.4",
     "rimraf": "^6.0.1",
+    "tsx": "^4.19.1",
     "typescript": "^5.6.3"
   },
   "dependencies": {
-    "tsx": "^4.19.1"
+    "proper-url-join": "^2.1.2"
   }
 }

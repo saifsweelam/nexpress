@@ -4,20 +4,19 @@ import url from 'url'
 
 class Request {
     private req: IncomingMessage;
-    path?: string | null
-    query?: ParsedUrlQuery
+    path: string
+    query: ParsedUrlQuery
 
     constructor(req: IncomingMessage) {
         this.req = req;
-        this.setUrlProperties();
+        this.req.url = this.req.url ?? "/";
+        const { pathname, query } = url.parse(this.req.url, true);
+        this.path = pathname ?? "/";
+        this.query = query;
     }
 
-    private setUrlProperties() {
-        if (this.req.url) {
-            const { pathname, query } = url.parse(this.req.url, true);
-            this.path = pathname;
-            this.query = query;
-        }
+    get method() {
+        return this.req.method;
     }
 }
 
