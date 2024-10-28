@@ -17,37 +17,37 @@ class Nexpress extends Server implements HasRouting {
         })
     }
 
-    use(firstParam: string|RequestHandler|HandlerFunction, ...handlers: (RequestHandler|HandlerFunction)[]) {
+    use(firstParam: string | RequestHandler | HandlerFunction, ...handlers: (RequestHandler | HandlerFunction)[]) {
         this.router.use(firstParam, ...handlers);
         return this;
     }
 
-    all(path: string, ...handlers: (Middleware|HandlerFunction)[]) {
+    all(path: string, ...handlers: (Middleware | HandlerFunction)[]) {
         this.router.all(path, ...handlers);
         return this;
     }
 
-    get(path: string, ...handlers: (Middleware|HandlerFunction)[]) {
+    get(path: string, ...handlers: (Middleware | HandlerFunction)[]) {
         this.router.get(path, ...handlers);
         return this;
     }
 
-    post(path: string, ...handlers: (Middleware|HandlerFunction)[]) {
+    post(path: string, ...handlers: (Middleware | HandlerFunction)[]) {
         this.router.post(path, ...handlers);
         return this;
     }
 
-    patch(path: string, ...handlers: (Middleware|HandlerFunction)[]) {
+    patch(path: string, ...handlers: (Middleware | HandlerFunction)[]) {
         this.router.patch(path, ...handlers);
         return this;
     }
 
-    put(path: string, ...handlers: (Middleware|HandlerFunction)[]) {
+    put(path: string, ...handlers: (Middleware | HandlerFunction)[]) {
         this.router.put(path, ...handlers);
         return this;
     }
 
-    delete(path: string, ...handlers: (Middleware|HandlerFunction)[]) {
+    delete(path: string, ...handlers: (Middleware | HandlerFunction)[]) {
         this.router.delete(path, ...handlers);
         return this;
     }

@@ -35,8 +35,8 @@ abstract class RequestHandler {
 
     private getFullPath(trailingSlash: boolean = false) {
         let fullPath = "";
-        let currentHandler: RequestHandler|undefined = this;
-        while(currentHandler) {
+        let currentHandler: RequestHandler | undefined = this;
+        while (currentHandler) {
             if (currentHandler.path) {
                 fullPath = urlJoin(currentHandler.path, fullPath, { trailingSlash });
             }
