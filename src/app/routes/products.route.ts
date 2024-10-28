@@ -14,4 +14,9 @@ router.get("/man", (req, res, next) => {
     res.send("Mannnn");
 })
 
+router.route("/home")
+    .get((req, res, next) => {
+        res.send("Welcome home !!!!!!")
+    })
+
 export default router;
